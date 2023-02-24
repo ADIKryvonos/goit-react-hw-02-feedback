@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types';
 import { WrapBtn, Button } from './FeedbackOptions.styled';
-import {
-  BsFillEmojiSmileFill,
-  BsFillEmojiNeutralFill,
-  BsFillEmojiFrownFill,
-} from 'react-icons/bs';
 
-export const FeedbackOptions = ({ onGoodBtn, onNeutralBtn, onBadBtn }) => (
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
   <WrapBtn>
-    <Button type="button" color="good" onClick={onGoodBtn}>
-      Good <BsFillEmojiSmileFill />
-    </Button>
-    <Button type="button" color="neutral" onClick={onNeutralBtn}>
-      Neutral <BsFillEmojiNeutralFill />
-    </Button>
-    <Button type="button" color="bad" onClick={onBadBtn}>
-      Bad <BsFillEmojiFrownFill />
-    </Button>
+    {options.map(option => (
+      <Button
+        type="button"
+        key={option}
+        color={option}
+        onClick={() => onLeaveFeedback(option)}
+      >
+        {option}
+      </Button>
+    ))}
   </WrapBtn>
 );
 
 FeedbackOptions.propTypes = {
-  onGoodBtnd: PropTypes.func,
-  onGonNeutralBtnoodBtnd: PropTypes.func,
-  onBadBtn: PropTypes.func,
+  onLeaveFeedback: PropTypes.func,
 };

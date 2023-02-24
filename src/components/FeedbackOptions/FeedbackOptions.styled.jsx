@@ -11,19 +11,13 @@ export const Button = styled.button`
   height: 40px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
 
   :not(:last-child) {
     margin-right: 15px;
   }
-
-  svg {
-    display: flex;
-    justify-content: center;
-
-    margin-right: auto;
-    margin-left: auto;
-
-    color: ${props => {
+  :hover {
+    border-color: ${props => {
       switch (props.color) {
         case 'good':
           return 'green';
