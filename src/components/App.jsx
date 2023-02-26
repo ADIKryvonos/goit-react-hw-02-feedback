@@ -32,6 +32,7 @@ export class App extends Component {
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
+          flexDirection: 'column',
         }}
       >
         <Section title="Please leave feedback">
@@ -39,24 +40,20 @@ export class App extends Component {
             options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
           />
-          {total > 0 ? (
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={total}
-              positivePercentage={positivePercentage}
-            ></Statistics>
-          ) : (
-            <p
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              There is no feedback
-            </p>
-          )}
+        </Section>
+        <Section>
+          {total > 0
+            ? ((Section.title = ''),
+              (
+                <Statistics
+                  good={good}
+                  neutral={neutral}
+                  bad={bad}
+                  total={total}
+                  positivePercentage={positivePercentage}
+                ></Statistics>
+              ))
+            : (Section.title = 'There is no feedback')}
         </Section>
       </div>
     );
